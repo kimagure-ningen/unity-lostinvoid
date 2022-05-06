@@ -7,10 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Unity Prefs")]
     [SerializeField]
     private GameObject sphere;
-
     private float speed = 10f;
-
-    // test
     private Vector3 currentPos;
     private Quaternion currentRot;
 
@@ -52,10 +49,13 @@ public class PlayerMovement : MonoBehaviour
         Physics.gravity = ground * 9.81f;
     }
 
+    void OnCollisionStay(Collision collider)
+    {
+
+    }
+
     void LateUpdate()
     {
-        // Debug.Log("pos" + transform.position);
-        // Debug.Log("rot" + transform.rotation);
         this.transform.position = currentPos;
         this.transform.rotation = currentRot;
     }
