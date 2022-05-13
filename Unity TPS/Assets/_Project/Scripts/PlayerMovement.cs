@@ -4,59 +4,71 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Unity Prefs")]
-    [SerializeField]
-    private GameObject sphere;
-    private float speed = 10f;
-    private Vector3 currentPos;
-    private Quaternion currentRot;
+    public GameObject sphere;
+    public float speed = 4f;
+    public float jumpHeight = 1.2f;
+    private float gravity = 100f;
+    private bool onGround = false;
+    private float distanceToGround;
+    private Vector3 groundNormal;
+    private Rigidbody rb;
 
     void Start()
     {
-        currentPos = this.transform.position;
-        currentRot = this.transform.rotation;
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        //* Movement
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+
+        transform.Translate(x, 0, z);
+
+        //* Local Rotation
+        if (Input.GetKey(KeyCode.E))
         {
-            this.transform.position += transform.forward * speed * Time.deltaTime;
-            currentPos = this.transform.position;
-            currentRot = this.transform.rotation;
+            transform.Rotate(0, 150 * Time.deltaTime, 0);
         }
 
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.Q))
         {
-            this.transform.position -= transform.forward * speed * Time.deltaTime;
-            currentPos = this.transform.position;
-            currentRot = this.transform.rotation;
+            transform.Rotate(0, -150 * Time.deltaTime, 0);
         }
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            this.transform.Rotate(0, -1f, 0);
-            currentRot = this.transform.rotation;
+            rb.AddForce(transform.up * 40000 * jumpHeight * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        //* Ground Control
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 10))
         {
-            this.transform.Rotate(0, 1f, 0);
-            currentRot = this.transform.rotation;
+            distanceToGround = hit.distance;
+            groundNormal = hit.normal;
+
+            if (distanceToGround <= 0.2f)
+            {
+                onGround = true;
+            }
+            else
+            {
+                onGround = false;
+            }
         }
 
-        Vector3 ground = sphere.transform.position - this.transform.position;
-        Physics.gravity = ground * 9.81f;
-    }
+        //* Gravity & Rotation
+        Vector3 gravDirection = (transform.position - sphere.transform.position).normalized;
 
-    void OnCollisionStay(Collision collider)
-    {
+        if (onGround == false)
+        {
+            rb.AddForce(gravDirection * -gravity);
+        }
 
-    }
-
-    void LateUpdate()
-    {
-        this.transform.position = currentPos;
-        this.transform.rotation = currentRot;
+        Quaternion toRotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
+        transform.rotation = toRotation;
     }
 }
