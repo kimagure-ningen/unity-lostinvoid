@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject target;
-    public float xSpeed = 3.5f;
-    private float sensitivity = 17f;
-
-    private float minFov = 35f;
-    private float maxFov = 100f;
+    float angleUp = 60f;
+    float angleDown = -60f;
+    float rotate_speed = 1;
+    public Vector3 axisPos;
 
     void Update()
     {
-        if (Input.GetMouseButton(1))
+        transform.eulerAngles += new Vector3(
+            Input.GetAxis("Mouse Y") * rotate_speed,
+            Input.GetAxis("Mouse X") * rotate_speed, 0);
+
+        float angleX = transform.eulerAngles.x;
+
+        if (angleX >= 180)
         {
-            transform.RotateAround(target.transform.position, transform.up, Input.GetAxis("Mouse X") * xSpeed);
-            transform.RotateAround(target.transform.position, transform.right, Input.GetAxis("Mouse Y") * xSpeed);
+            angleX = angleX - 360;
         }
 
-        //* Zoom
-        float fov = Camera.main.fieldOfView;
-        fov += Input.GetAxis("Mouse ScrollWheel") * -sensitivity;
-        fov = Mathf.Clamp(fov, minFov, maxFov);
-        Camera.main.fieldOfView = fov;
+        transform.eulerAngles = new Vector3(Mathf.Clamp(angleX, angleDown, angleUp), transform.eulerAngles.y, transform.eulerAngles.z);
     }
 }
