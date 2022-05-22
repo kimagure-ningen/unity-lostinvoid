@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject sphere;
-    public float speed = 4f;
-    public float jumpHeight = 1.2f;
+    private float speed = 4f;
+    private float jumpHeight = 1.2f;
     private float gravity = 100f;
     private bool onGround = false;
     private float distanceToGround;
