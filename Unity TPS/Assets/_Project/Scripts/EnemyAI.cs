@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     private GameObject sphere;
-    private float bulletSpeed = 20f;
+    private GameObject player;
+    private float speed = 5f;
     private float gravity = 100f;
-    private float bulletRangeTime = 0.75f;
     private bool onGround = false;
     private float distanceToGround;
     private Vector3 groundNormal;
@@ -21,7 +21,11 @@ public class Bullet : MonoBehaviour
             Debug.Log("Sphere not found.");
         }
 
-        StartCoroutine(BulletRange());
+        player = GameObject.Find("Player");
+        if (player == null)
+        {
+            Debug.Log("Player not found.");
+        }
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -29,8 +33,6 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(0, 0, bulletSpeed * Time.deltaTime);
-
         //* Ground Control
         RaycastHit hit = new RaycastHit();
         if (Physics.Raycast(transform.position, -transform.up, out hit, 10))
@@ -58,10 +60,12 @@ public class Bullet : MonoBehaviour
 
         Quaternion toRotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
         transform.rotation = toRotation;
-    }
-    private IEnumerator BulletRange()
-    {
-        yield return new WaitForSeconds(bulletRangeTime);
-        Destroy(gameObject);
+
+        //* Navigation
+        if (Vector3.Distance(gameObject.transform.position, player.transform.position) > 5f)
+        {
+            transform.LookAt(player.transform, Vector3.up);
+            transform.Translate(0, 0, speed * Time.deltaTime);
+        }
     }
 }
