@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private GameObject sphere;
+    private GameObject planet;
     private float bulletSpeed = 20f;
     private float gravity = 100f;
     private float bulletRangeTime = 0.75f;
@@ -15,10 +15,10 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        sphere = GameObject.Find("Sphere");
-        if (sphere == null)
+        planet = GameObject.Find("planetTest");
+        if (planet == null)
         {
-            Debug.Log("Sphere not found.");
+            Debug.LogError("Planet not found.");
         }
 
         StartCoroutine(BulletRange());
@@ -49,7 +49,7 @@ public class Bullet : MonoBehaviour
         }
 
         //* Gravity & Rotation
-        Vector3 gravDirection = (transform.position - sphere.transform.position).normalized;
+        Vector3 gravDirection = (transform.position - planet.transform.position).normalized;
 
         if (onGround == false)
         {

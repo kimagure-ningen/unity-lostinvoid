@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    private GameObject sphere;
+    private GameObject planet;
     private GameObject player;
     private float speed = 5f;
     private float gravity = 100f;
@@ -13,18 +13,20 @@ public class EnemyAI : MonoBehaviour
     private Vector3 groundNormal;
     private Rigidbody rb;
 
+    private bool isHitObstacle = false;
+
     void Start()
     {
-        sphere = GameObject.Find("Sphere");
-        if (sphere == null)
+        planet = GameObject.Find("planetTest");
+        if (planet == null)
         {
-            Debug.Log("Sphere not found.");
+            Debug.LogError("Planet not found.");
         }
 
         player = GameObject.Find("Player");
         if (player == null)
         {
-            Debug.Log("Player not found.");
+            Debug.LogError("Player not found.");
         }
 
         rb = GetComponent<Rigidbody>();
@@ -51,7 +53,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         //* Gravity & Rotation
-        Vector3 gravDirection = (transform.position - sphere.transform.position).normalized;
+        Vector3 gravDirection = (transform.position - planet.transform.position).normalized;
 
         if (onGround == false)
         {
@@ -61,11 +63,33 @@ public class EnemyAI : MonoBehaviour
         Quaternion toRotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
         transform.rotation = toRotation;
 
-        //* Navigation
+        if (isHitObstacle == false){
+            EnemyNavigation();
+        }
+    }
+
+    void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.tag == "Obstacle") {
+            StartCoroutine(ObstacleCollision());
+            Debug.Log("obstacle hit!");
+        }
+    }
+
+    void EnemyNavigation() {
+        transform.LookAt(player.transform, Vector3.up);
         if (Vector3.Distance(gameObject.transform.position, player.transform.position) > 5f)
         {
-            transform.LookAt(player.transform, Vector3.up);
             transform.Translate(0, 0, speed * Time.deltaTime);
         }
+    }
+
+    IEnumerator ObstacleCollision() {
+        isHitObstacle = true;
+        //! fix here (it's not in update method)
+        transform.Translate(0,0, -speed);
+        yield return new WaitForSeconds(1);
+        transform.Translate(speed *Time.deltaTime,0,0);
+        yield return new WaitForSeconds(1);
+        isHitObstacle = false;
     }
 }

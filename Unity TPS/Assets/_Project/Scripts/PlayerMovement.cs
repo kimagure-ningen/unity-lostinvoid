@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public GameObject sphere;
+    public GameObject planet;
     private float speed = 4f;
     private float jumpHeight = 1.2f;
     private float gravity = 100f;
@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //* Gravity & Rotation
-        Vector3 gravDirection = (transform.position - sphere.transform.position).normalized;
+        Vector3 gravDirection = (transform.position - planet.transform.position).normalized;
 
         if (onGround == false)
         {
