@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    public GameObject gameMaster;
+    private GameMaster masterScript;
+
     private GameObject planet;
     private GameObject player;
     private float speed = 5f;
@@ -31,6 +34,13 @@ public class EnemyAI : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        gameMaster = GameObject.Find("GameMaster");
+        if (gameMaster == null)
+        {
+            Debug.LogError("GameMaster not found.");
+        }
+        masterScript = gameMaster.GetComponent<GameMaster>();
     }
 
     void Update()
@@ -65,10 +75,12 @@ public class EnemyAI : MonoBehaviour
 
         if (isHitObstacle == false){
             EnemyNavigation();
+        } else {
+            transform.Translate(speed*Time.deltaTime,0,0);
         }
     }
 
-    void OnCollisionEnter(Collision collision) {
+    void OnCollisionStay(Collision collision) {
         if (collision.gameObject.tag == "Obstacle") {
             StartCoroutine(ObstacleCollision());
             Debug.Log("obstacle hit!");
@@ -77,19 +89,18 @@ public class EnemyAI : MonoBehaviour
 
     void EnemyNavigation() {
         transform.LookAt(player.transform, Vector3.up);
-        if (Vector3.Distance(gameObject.transform.position, player.transform.position) > 5f)
+        if (Vector3.Distance(gameObject.transform.position, player.transform.position) > 1.5f)
         {
             transform.Translate(0, 0, speed * Time.deltaTime);
+        } else {
+            Destroy(gameObject);
+            masterScript.spawnedEnemy.RemoveAt(0);
         }
     }
 
     IEnumerator ObstacleCollision() {
         isHitObstacle = true;
-        //! fix here (it's not in update method)
-        transform.Translate(0,0, -speed);
-        yield return new WaitForSeconds(1);
-        transform.Translate(speed *Time.deltaTime,0,0);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
         isHitObstacle = false;
     }
 }
