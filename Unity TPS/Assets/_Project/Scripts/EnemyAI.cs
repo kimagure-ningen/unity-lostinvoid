@@ -17,7 +17,7 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody rb;
 
     private bool isHitObstacle = false;
-
+    
     void Start()
     {
         planet = GameObject.Find("planetTest");
@@ -40,38 +40,14 @@ public class EnemyAI : MonoBehaviour
         {
             Debug.LogError("GameMaster not found.");
         }
+
         masterScript = gameMaster.GetComponent<GameMaster>();
     }
 
     void Update()
     {
-        //* Ground Control
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 10))
-        {
-            distanceToGround = hit.distance;
-            groundNormal = hit.normal;
-
-            if (distanceToGround <= 0.2f)
-            {
-                onGround = true;
-            }
-            else
-            {
-                onGround = false;
-            }
-        }
-
-        //* Gravity & Rotation
-        Vector3 gravDirection = (transform.position - planet.transform.position).normalized;
-
-        if (onGround == false)
-        {
-            rb.AddForce(gravDirection * -gravity);
-        }
-
-        Quaternion toRotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
-        transform.rotation = toRotation;
+        GroundConrol();
+        Gravity();
 
         if (isHitObstacle == false){
             EnemyNavigation();
@@ -87,8 +63,38 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    void GroundConrol() {
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 10))
+        {
+            distanceToGround = hit.distance;
+            groundNormal = hit.normal;
+
+            if (distanceToGround <= 0.2f)
+            {
+                onGround = true;
+            }
+            else
+            {
+                onGround = false;
+            }
+        }
+    }
+
+    void Gravity() {
+        Vector3 gravDirection = (transform.position - planet.transform.position).normalized;
+
+        if (onGround == false)
+        {
+            rb.AddForce(gravDirection * -gravity);
+        }
+
+        FixRotation();
+    }
+
     void EnemyNavigation() {
         transform.LookAt(player.transform, Vector3.up);
+        FixRotation();
         if (Vector3.Distance(gameObject.transform.position, player.transform.position) > 1.5f)
         {
             transform.Translate(0, 0, speed * Time.deltaTime);
@@ -96,6 +102,11 @@ public class EnemyAI : MonoBehaviour
             Destroy(gameObject);
             masterScript.spawnedEnemy.RemoveAt(0);
         }
+    }
+
+    void FixRotation() {
+        Quaternion toRotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
+        transform.rotation = toRotation;
     }
 
     IEnumerator ObstacleCollision() {

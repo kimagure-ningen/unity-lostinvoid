@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject gameMaster;
+    private GameMaster masterScript;
     public GameObject planet;
     private float speed = 4f;
     private float jumpHeight = 1.2f;
@@ -17,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        masterScript = gameMaster.GetComponent<GameMaster>();
     }
 
     void Update()
@@ -43,7 +47,14 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(transform.up * 40000 * jumpHeight * Time.deltaTime);
         }
 
-        //* Ground Control
+        //* masterScript.GroundConrol(gameObject, distanceToGround, groundNormal, onGround);
+        //* masterScript.Gravity(gameObject,onGround, rb, groundNormal);
+
+        GroundConrol();
+        Gravity();
+    }
+
+    void GroundConrol() {
         RaycastHit hit = new RaycastHit();
         if (Physics.Raycast(transform.position, -transform.up, out hit, 10))
         {
@@ -59,8 +70,9 @@ public class PlayerMovement : MonoBehaviour
                 onGround = false;
             }
         }
+    }
 
-        //* Gravity & Rotation
+    void Gravity() {
         Vector3 gravDirection = (transform.position - planet.transform.position).normalized;
 
         if (onGround == false)

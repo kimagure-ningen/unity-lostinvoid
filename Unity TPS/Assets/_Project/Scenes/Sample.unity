@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -544,6 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f2a1f7054fa884cbf678bac28f1eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameMaster: {fileID: 1856085564}
   planet: {fileID: 1193734216680312885}
 --- !u!114 &1295463014
 MonoBehaviour:
@@ -602,6 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a5655d3ce794f49a264bfb7b19338d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet: {fileID: 1193734216680312885}
   enemy: {fileID: 8918723491416087744, guid: 2df6240a718746a40b20ba5b9139fe93, type: 3}
   spawnedEnemy: []
 --- !u!1001 &122885746445151809
