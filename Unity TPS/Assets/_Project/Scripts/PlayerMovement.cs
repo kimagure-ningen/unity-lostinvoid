@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject gameMaster;
     private GameMaster masterScript;
     public GameObject planet;
+    public GameObject avatar;
     private float speed = 4f;
     private float jumpHeight = 1.2f;
     private float gravity = 100f;
@@ -32,16 +33,6 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(x, 0, z);
 
         //* Local Rotation
-        if (Input.GetKey(KeyCode.E))
-        {
-            transform.Rotate(0, 150 * Time.deltaTime, 0);
-        }
-
-        if (Input.GetKey(KeyCode.Q))
-        {
-            transform.Rotate(0, -150 * Time.deltaTime, 0);
-        }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(transform.up * 40000 * jumpHeight * Time.deltaTime);
