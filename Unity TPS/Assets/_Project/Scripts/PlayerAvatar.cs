@@ -11,25 +11,25 @@ public class PlayerAvatar : MonoBehaviour
     float sec;
 
     void Update() {
-        //! fix here
         if (Input.GetKey(KeyCode.W)) {
             Vector3 localAngle = transform.localEulerAngles;
             localAngle.y = 0f; 
             transform.localEulerAngles = localAngle;  
         }
 
-        // if (Input.GetKey(KeyCode.S)) {
-        //     Vector3 localAngle = transform.localEulerAngles;
-        //     localAngle.y = 180f; 
-        //     transform.localEulerAngles = localAngle;  
-        // }
-
         if (Input.GetKey(KeyCode.S)) {
-            startRot = transform.rotation;
-            targetRot = Quaternion.AngleAxis(180f, axis) * transform.rotation;
-            sec += Time.deltaTime;   
-            transform.rotation = Quaternion.Lerp(startRot, targetRot, sec * interpolant);
+            Vector3 localAngle = transform.localEulerAngles;
+            localAngle.y = 180f; 
+            transform.localEulerAngles = localAngle;  
         }
+
+        //! fix here
+        // if (Input.GetKey(KeyCode.S)) {
+        //     startRot = transform.rotation;
+        //     targetRot = Quaternion.AngleAxis(180f, axis) * transform.rotation;
+        //     sec += Time.deltaTime;   
+        //     transform.rotation = Quaternion.Lerp(startRot, targetRot, sec * interpolant);
+        // }
 
         if (Input.GetKey(KeyCode.A)) {
             Vector3 localAngle = transform.localEulerAngles;
