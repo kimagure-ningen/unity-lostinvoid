@@ -10,7 +10,7 @@ public class PlayerAvatar : MonoBehaviour
     float interpolant = 0.2f;
     float sec;
 
-    void Update() {
+    private void Update() {
         if (Input.GetKey(KeyCode.W)) {
             Vector3 localAngle = transform.localEulerAngles;
             localAngle.y = 0f; 
@@ -23,7 +23,7 @@ public class PlayerAvatar : MonoBehaviour
             transform.localEulerAngles = localAngle;  
         }
 
-        //! fix here
+        // fix here
         // if (Input.GetKey(KeyCode.S)) {
         //     startRot = transform.rotation;
         //     targetRot = Quaternion.AngleAxis(180f, axis) * transform.rotation;

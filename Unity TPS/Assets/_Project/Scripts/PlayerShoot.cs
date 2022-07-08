@@ -14,4 +14,5 @@ public class PlayerShoot : MonoBehaviour
             Instantiate(bulletPrefab, shootPoint.transform.position, shootPoint.transform.rotation);
         }
     }
+    
 }
