@@ -46,6 +46,7 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        // masterScript.GroundConrol(gameObject, distanceToGround, groundNormal, onGround, rb);
         GroundConrol();
         Gravity();
 
@@ -93,7 +94,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     void EnemyNavigation() {
-        transform.LookAt(player.transform, Vector3.up);
+        transform.LookAt(player.transform, transform.up);
         FixRotation();
         if (Vector3.Distance(gameObject.transform.position, player.transform.position) > 1.5f)
         {

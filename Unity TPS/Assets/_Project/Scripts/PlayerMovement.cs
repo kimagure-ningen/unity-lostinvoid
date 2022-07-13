@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Unity Stuff")]
     public GameObject gameMaster;
     private GameMaster masterScript;
     public GameObject planet;
-    public GameObject avatar;
+    public GameObject playerMesh;
+
     private float speed = 4f;
     private float jumpHeight = 1.2f;
-    private float gravity = 100f;
     private bool onGround = false;
     private float distanceToGround;
     private Vector3 groundNormal;
     private Rigidbody rb;
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -24,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         masterScript = gameMaster.GetComponent<GameMaster>();
     }
 
-    void Update()
+    private void Update()
     {
         //* Movement
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
@@ -32,46 +33,48 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Translate(x, 0, z);
 
-        //* Local Rotation
+        //* Jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(transform.up * 40000 * jumpHeight * Time.deltaTime);
         }
 
-        //* masterScript.GroundConrol(gameObject, distanceToGround, groundNormal, onGround);
-        //* masterScript.Gravity(gameObject,onGround, rb, groundNormal);
+        masterScript.GroundConrol(gameObject, distanceToGround, groundNormal, onGround, rb);
 
-        GroundConrol();
-        Gravity();
+        meshController();
     }
 
-    void GroundConrol() {
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 10))
-        {
-            distanceToGround = hit.distance;
-            groundNormal = hit.normal;
-
-            if (distanceToGround <= 0.2f)
-            {
-                onGround = true;
-            }
-            else
-            {
-                onGround = false;
-            }
-        }
-    }
-
-    void Gravity() {
-        Vector3 gravDirection = (transform.position - planet.transform.position).normalized;
-
-        if (onGround == false)
-        {
-            rb.AddForce(gravDirection * -gravity);
+    private void meshController() {
+        if (Input.GetKey(KeyCode.W)) {
+            playerMesh.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
-        Quaternion toRotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
-        transform.rotation = toRotation;
+        if (Input.GetKey(KeyCode.S)) {
+            playerMesh.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+
+        if (Input.GetKey(KeyCode.A)) {
+            playerMesh.transform.localRotation = Quaternion.Euler(0, -90, 0);
+        }
+        
+        if (Input.GetKey(KeyCode.D)) {
+            playerMesh.transform.localRotation = Quaternion.Euler(0, 90, 0);
+        }
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A)) {
+            playerMesh.transform.localRotation = Quaternion.Euler(0, -45, 0); 
+        }
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D)){
+            playerMesh.transform.localRotation = Quaternion.Euler(0, 45, 0);
+        }
+
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A)) {
+            playerMesh.transform.localRotation = Quaternion.Euler(0, -135, 0);
+        }
+
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D)) {
+            playerMesh.transform.localRotation = Quaternion.Euler(0, 135, 0);
+        }
     }
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public GameObject gameMaster;
+    private GameMaster masterScript;
     private GameObject planet;
     private float bulletSpeed = 20f;
-    private float gravity = 100f;
     private float bulletRangeTime = 0.75f;
     private bool onGround = false;
     private float distanceToGround;
@@ -25,39 +26,20 @@ public class Bullet : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        gameMaster = GameObject.Find("GameMaster");
+        if (gameMaster == null)
+        {
+            Debug.LogError("GameMaster not found.");
+        }
+        masterScript = gameMaster.GetComponent<GameMaster>();
     }
 
     void Update()
     {
         transform.Translate(0, 0, bulletSpeed * Time.deltaTime);
 
-        //* Ground Control
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 10))
-        {
-            distanceToGround = hit.distance;
-            groundNormal = hit.normal;
-
-            if (distanceToGround <= 0.2f)
-            {
-                onGround = true;
-            }
-            else
-            {
-                onGround = false;
-            }
-        }
-
-        //* Gravity & Rotation
-        Vector3 gravDirection = (transform.position - planet.transform.position).normalized;
-
-        if (onGround == false)
-        {
-            rb.AddForce(gravDirection * -gravity);
-        }
-
-        Quaternion toRotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
-        transform.rotation = toRotation;
+        masterScript.GroundConrol(gameObject, distanceToGround, groundNormal, onGround, rb);
     }
     private IEnumerator BulletRange()
     {

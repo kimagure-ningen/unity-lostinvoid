@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
+    // Gravity & GroundControl
     public GameObject planet;
     private float gravity = 100f;
+
+    // Enemy
     public GameObject enemy;
     public List<GameObject> spawnedEnemy;
 
@@ -19,9 +22,7 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    //! fix here (does not work)
-    public void GroundConrol(GameObject _gameObject, float distanceToGround, Vector3 groundNormal, bool onGround) {
-        Debug.Log("Hey!");
+    public void GroundConrol(GameObject _gameObject, float distanceToGround, Vector3 groundNormal, bool onGround, Rigidbody rb) {
         RaycastHit hit = new RaycastHit();
         if (Physics.Raycast(_gameObject.transform.position, -_gameObject.transform.up, out hit, 10))
         {
@@ -37,21 +38,19 @@ public class GameMaster : MonoBehaviour
                 onGround = false;
             }
         }
+        
+        Gravity(_gameObject, onGround, rb, groundNormal);
     }
 
-    public void Gravity(GameObject _gameObject, bool onGround, Rigidbody rb, Vector3 groundNormal) {
+    private void Gravity(GameObject _gameObject, bool onGround, Rigidbody rb, Vector3 groundNormal) {
         Vector3 gravDirection = (_gameObject.transform.position - planet.transform.position).normalized;
 
         if (onGround == false)
         {
             rb.AddForce(gravDirection * -gravity);
         }
-
-        FixRotation(_gameObject, groundNormal);
-    }
-
-    public void FixRotation(GameObject _gameObject, Vector3 groundNormal) {
         Quaternion toRotation = Quaternion.FromToRotation(_gameObject.transform.up, groundNormal) * _gameObject.transform.rotation;
         _gameObject.transform.rotation = toRotation;
     }
+
 }
