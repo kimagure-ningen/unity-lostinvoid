@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Unity Stuff")]
-    public GameObject gameMaster;
-    private GameMaster masterScript;
+    public GameMaster gameMaster;
     public GameObject planet;
     public GameObject playerMesh;
 
@@ -21,8 +20,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-
-        masterScript = gameMaster.GetComponent<GameMaster>();
     }
 
     private void Update()
@@ -39,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(transform.up * 40000 * jumpHeight * Time.deltaTime);
         }
 
-        masterScript.GroundConrol(gameObject, distanceToGround, groundNormal, onGround, rb);
+        gameMaster.GroundConrol(gameObject, distanceToGround, groundNormal, onGround, rb);
 
         meshController();
     }

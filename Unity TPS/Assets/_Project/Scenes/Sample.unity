@@ -583,7 +583,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2129622227}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -662,7 +662,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2129622227}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -891,9 +891,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6732c23bd1f93834191dab09f14a74a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  hungerMeter: {fileID: 0}
-  oxygenMeter: {fileID: 0}
+  _player: {fileID: 1945764114}
+  hungerMeter: {fileID: 991258497}
+  oxygenMeter: {fileID: 1019333127}
 --- !u!1 &1295463006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f2a1f7054fa884cbf678bac28f1eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMaster: {fileID: 1856085564}
+  gameMaster: {fileID: 1856085566}
   planet: {fileID: 1193734216680312885}
   playerMesh: {fileID: 1295463006}
 --- !u!54 &1945764111
@@ -1159,6 +1159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e2355a36fc0e641b0f4fa1841a62e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHunger: 0
+  currentOxygen: 0
 --- !u!1 &2053787143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,8 +1310,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 263853962}
-  - {fileID: 1019333126}
   - {fileID: 991258496}
+  - {fileID: 1019333126}
   m_Father: {fileID: 1244825566}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

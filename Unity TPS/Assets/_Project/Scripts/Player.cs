@@ -7,12 +7,12 @@ public class Player : MonoBehaviour
     //* Hunger
     private float maxHunger = 100f;
     private float hungerDepletionRate = 1f;
-    private float currentHunger;
+    public float currentHunger;
 
     //* Oxygen
     private float maxOxygen = 100f;
     private float oxygenDepletionRate = 5f;
-    private float currentOxygen;
+    public float currentOxygen;
 
     private void Start() {
         currentHunger = maxHunger;

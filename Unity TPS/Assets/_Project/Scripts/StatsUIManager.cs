@@ -10,6 +10,7 @@ public class StatsUIManager : MonoBehaviour
     public Text oxygenMeter;
 
     private void FixedUpdate() {
-        
+        hungerMeter.text = "Hunger: " + Mathf.Floor(_player.currentHunger).ToString();
+        oxygenMeter.text = "Oxygen: " + Mathf.Floor(_player.currentOxygen).ToString();
     }
 }
