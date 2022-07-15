@@ -100,8 +100,8 @@ public class EnemyAI : MonoBehaviour
         {
             transform.Translate(0, 0, speed * Time.deltaTime);
         } else {
-            Destroy(gameObject);
             masterScript.spawnedEnemy.RemoveAt(0);
+            Destroy(gameObject);
         }
     }
 

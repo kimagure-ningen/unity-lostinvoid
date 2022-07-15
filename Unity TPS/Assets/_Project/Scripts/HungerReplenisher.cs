@@ -4,12 +4,13 @@ using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
 
-public class OxygenReplenisher : MonoBehaviour
+public class HungerReplenisher : MonoBehaviour
 {
     private float rotateSpeed = 20f;
-    private float oxygenReplenish = 20f;
+    private float hungerReplenish = 20f;
 
-    private void Awake() {
+    private void Awake()
+    {
         GetComponent<SphereCollider>().isTrigger = true;
     }
 
@@ -26,7 +27,7 @@ public class OxygenReplenisher : MonoBehaviour
 
         if (player == null) return;
 
-        player.ReplenishOxygen(oxygenReplenish);
+        player.ReplenishHunger(hungerReplenish);
         Destroy(gameObject);
     }
 }
