@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 0}
   currentHealth: 0
+  damageIndicator: {fileID: 7721960894457681192, guid: aa3bdcf791800cb4289b14585ffa1535, type: 3}
 --- !u!114 &8918723491416087750
 MonoBehaviour:
   m_ObjectHideFlags: 0

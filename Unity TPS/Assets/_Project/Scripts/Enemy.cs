@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     private float maxHealth = 100f;
     public float currentHealth;
 
+    public GameObject damageIndicator;
+
     private void Start()
     {
         gameMaster = GameObject.Find("GameMaster");
@@ -34,6 +36,9 @@ public class Enemy : MonoBehaviour
     public void Damage(float damage)
     {
         currentHealth -= damage;
+
+        DamageIndicator indicator = Instantiate(damageIndicator, transform.position, Quaternion.identity).GetComponent<DamageIndicator>();
+        indicator.SetDamageIndicator(damage);
     }
 
     private void OnEnemyDeath()
