@@ -7,8 +7,8 @@ public class DamageIndicator : MonoBehaviour
 {
     public Text damageIndicator;
     private float lifeTime = 0.6f;
-    private float minDist = 0.1f;
-    private float maxDist = 0.5f;
+    private float minDist = 1.5f;
+    private float maxDist = 3f;
     private Vector3 initialPos;
     private Vector3 targetPos;
     private float timer;
