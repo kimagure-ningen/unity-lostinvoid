@@ -24,7 +24,7 @@ public class TPSCameraController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             if (vCam2.Priority == 20)
             {
@@ -35,30 +35,35 @@ public class TPSCameraController : MonoBehaviour
             }
         }
 
-        float xRotation = Input.GetAxis("Mouse X");
-        float yRotation = Input.GetAxis("Mouse Y");
-
-        character.transform.Rotate(0, xRotation, 0);
-
-        float currentAngle = pivot.transform.localRotation.x;
-        
-        if (-yRotation != 0)
+        if (vCam2.Priority == 20)
         {
-            if (0 < yRotation)
-            {
-                if (minYAngle <= currentAngle)
-                {
-                    pivot.transform.Rotate(-yRotation, 0, 0);
-                    Debug.Log("Turning");
-                }
-            }
-            else
-            {
-                if (currentAngle <= maxYAngle)
-                {
-                    pivot.transform.Rotate(-yRotation, 0, 0);
-                }
-            }
+            float xRotation = Input.GetAxis("Mouse X");
+            float yRotation = Input.GetAxis("Mouse Y");
+
+            character.transform.Rotate(0, xRotation, 0);
+
+            float currentAngle = pivot.transform.localRotation.x;
+
+            pivot.transform.Rotate(-yRotation, 0, 0);
+
+            //if (-yRotation != 0)
+            //{
+            //    if (0 < yRotation)
+            //    {
+            //        if (minYAngle <= currentAngle)
+            //        {
+            //            pivot.transform.Rotate(-yRotation, 0, 0);
+            //            Debug.Log("Turning");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if (currentAngle <= maxYAngle)
+            //        {
+            //            pivot.transform.Rotate(-yRotation, 0, 0);
+            //        }
+            //    }
+            //}
         }
     }
 }
