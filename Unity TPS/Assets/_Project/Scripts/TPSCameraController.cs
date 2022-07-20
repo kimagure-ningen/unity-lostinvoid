@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class TPSCameraController : MonoBehaviour
 {
+    [Header("Cinemachine Setup")]
+    public CinemachineVirtualCamera vCam2;
+    private int defaultPriority;
+
     public Transform character;
     public Transform pivot;
 
@@ -12,8 +17,24 @@ public class TPSCameraController : MonoBehaviour
     [Range(0.5f, 0.999f)]
     public float minYAngle = 0.5f;
 
-    void Update()
+    private void Start()
     {
+        defaultPriority = vCam2.Priority;
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButton(1))
+        {
+            if (vCam2.Priority == 20)
+            {
+                vCam2.Priority = defaultPriority;
+            } else
+            {
+                vCam2.Priority = 20;
+            }
+        }
+
         float xRotation = Input.GetAxis("Mouse X");
         float yRotation = Input.GetAxis("Mouse Y");
 
@@ -28,6 +49,7 @@ public class TPSCameraController : MonoBehaviour
                 if (minYAngle <= currentAngle)
                 {
                     pivot.transform.Rotate(-yRotation, 0, 0);
+                    Debug.Log("Turning");
                 }
             }
             else
