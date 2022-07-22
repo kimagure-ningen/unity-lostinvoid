@@ -42,36 +42,47 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void meshController() {
-        if (Input.GetKey(KeyCode.W)) {
-            playerMesh.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
+        if (gameMaster.isShootingMode == false)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                playerMesh.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
 
-        if (Input.GetKey(KeyCode.S)) {
-            playerMesh.transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }
+            if (Input.GetKey(KeyCode.S))
+            {
+                playerMesh.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
 
-        if (Input.GetKey(KeyCode.A)) {
-            playerMesh.transform.localRotation = Quaternion.Euler(0, -90, 0);
-        }
-        
-        if (Input.GetKey(KeyCode.D)) {
-            playerMesh.transform.localRotation = Quaternion.Euler(0, 90, 0);
-        }
+            if (Input.GetKey(KeyCode.A))
+            {
+                playerMesh.transform.localRotation = Quaternion.Euler(0, -90, 0);
+            }
 
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A)) {
-            playerMesh.transform.localRotation = Quaternion.Euler(0, -45, 0); 
-        }
+            if (Input.GetKey(KeyCode.D))
+            {
+                playerMesh.transform.localRotation = Quaternion.Euler(0, 90, 0);
+            }
 
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D)){
-            playerMesh.transform.localRotation = Quaternion.Euler(0, 45, 0);
-        }
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+            {
+                playerMesh.transform.localRotation = Quaternion.Euler(0, -45, 0);
+            }
 
-        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A)) {
-            playerMesh.transform.localRotation = Quaternion.Euler(0, -135, 0);
-        }
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+            {
+                playerMesh.transform.localRotation = Quaternion.Euler(0, 45, 0);
+            }
 
-        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D)) {
-            playerMesh.transform.localRotation = Quaternion.Euler(0, 135, 0);
+            if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+            {
+                playerMesh.transform.localRotation = Quaternion.Euler(0, -135, 0);
+            }
+
+            if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+            {
+                playerMesh.transform.localRotation = Quaternion.Euler(0, 135, 0);
+            }
         }
     }
 }

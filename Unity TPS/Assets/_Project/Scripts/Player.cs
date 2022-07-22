@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     private void OnPlayerDeath()
     {
         Debug.Log("Player Died");
-        Time.timeScale = 0;
+        // Time.timeScale = 0;
     }
 
     public void ReplenishHunger(float hungerAmount) {
