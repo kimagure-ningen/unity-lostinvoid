@@ -6,18 +6,6 @@ using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
-    [Header("Camera")]
-    public CinemachineVirtualCamera vCam2;
-    private int defaultPriority;
-    public bool isShootingMode = false;
-
-    [Header("Aim")]
-    public Transform character;
-    public Transform pivot;
-    public GameObject crosshair;
-    private float maxYAngle = 0.3f;
-    private float minYAngle = -0.2f;
-
     [Header("Gravity & GroundControl")]
     public GameObject planet;
     private float gravity = 100f;
@@ -27,19 +15,10 @@ public class GameMaster : MonoBehaviour
     public List<GameObject> spawnedEnemy;
 
     private void Start() {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-
-        defaultPriority = vCam2.Priority;
-
         spawnedEnemy = new List<GameObject>();
     }
 
     private void Update() {
-        SwitchCamera();
-
-        MouseAim();
-
         if (spawnedEnemy.Count < 1) {
             spawnedEnemy.Add(Instantiate(enemy, new Vector3(0,0,22), Quaternion.identity));
         }
@@ -75,59 +54,4 @@ public class GameMaster : MonoBehaviour
         Quaternion toRotation = Quaternion.FromToRotation(_gameObject.transform.up, groundNormal) * _gameObject.transform.rotation;
         _gameObject.transform.rotation = toRotation;
     }
-
-    private void SwitchCamera()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (vCam2.Priority == 20)
-            {
-                vCam2.Priority = defaultPriority;
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                crosshair.SetActive(false);
-                isShootingMode = false;
-            }
-            else
-            {
-                vCam2.Priority = 20;
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-                crosshair.SetActive(true);
-                isShootingMode = true;
-            }
-        }
-    }
-
-    private void MouseAim()
-    {
-        if (vCam2.Priority == 20)
-        {
-            float xRotation = Input.GetAxis("Mouse X");
-            float yRotation = Input.GetAxis("Mouse Y");
-
-            character.transform.Rotate(0, xRotation, 0);
-
-            float currentAngle = pivot.transform.localRotation.x;
-
-            if (-yRotation != 0)
-            {
-                if (0 < yRotation)
-                {
-                    if (currentAngle >= minYAngle)
-                    {
-                        pivot.transform.Rotate(-yRotation, 0, 0);
-                    }
-                }
-                else
-                {
-                    if (currentAngle <= maxYAngle)
-                    {
-                        pivot.transform.Rotate(-yRotation, 0, 0);
-                    }
-                }
-            }
-        }
-    }
-
 }
