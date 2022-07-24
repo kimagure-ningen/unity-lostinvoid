@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 groundNormal;
     private Rigidbody rb;
 
+    // Testing
+    public Transform orientation;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -25,20 +28,26 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         //* Movement
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+        //float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        //float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
 
-        transform.Translate(x, 0, z);
+        //transform.Translate(x, 0, z);
 
-        //* Jump
+        // Testing New Type of Movement
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+        rb.AddForce(orientation.transform.forward * y * 2000 * Time.deltaTime);
+        rb.AddForce(orientation.transform.right * x * 2000 * Time.deltaTime);
+
+        //* Jump (Not Working)
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForce(transform.up * 40000 * jumpHeight * Time.deltaTime);
+            rb.AddForce(transform.up * 100000 * jumpHeight * Time.deltaTime);
         }
 
         gameMaster.GroundConrol(gameObject, distanceToGround, groundNormal, onGround, rb);
 
-        meshController();
+        // meshController();
     }
 
     private void meshController() {

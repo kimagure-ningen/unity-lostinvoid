@@ -15,10 +15,8 @@ public class GameMaster : MonoBehaviour
     public Transform character;
     public Transform pivot;
     public GameObject crosshair;
-    [Range(-0.999f, -0.5f)]
-    public float maxYAngle = -0.5f;
-    [Range(0.5f, 0.999f)]
-    public float minYAngle = 0.5f;
+    private float maxYAngle = 0.3f;
+    private float minYAngle = -0.2f;
 
     [Header("Gravity & GroundControl")]
     public GameObject planet;
@@ -112,26 +110,23 @@ public class GameMaster : MonoBehaviour
 
             float currentAngle = pivot.transform.localRotation.x;
 
-            pivot.transform.Rotate(-yRotation, 0, 0);
-
-            //if (-yRotation != 0)
-            //{
-            //    if (0 < yRotation)
-            //    {
-            //        if (minYAngle <= currentAngle)
-            //        {
-            //            pivot.transform.Rotate(-yRotation, 0, 0);
-            //            Debug.Log("Turning");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        if (currentAngle <= maxYAngle)
-            //        {
-            //            pivot.transform.Rotate(-yRotation, 0, 0);
-            //        }
-            //    }
-            //}
+            if (-yRotation != 0)
+            {
+                if (0 < yRotation)
+                {
+                    if (currentAngle >= minYAngle)
+                    {
+                        pivot.transform.Rotate(-yRotation, 0, 0);
+                    }
+                }
+                else
+                {
+                    if (currentAngle <= maxYAngle)
+                    {
+                        pivot.transform.Rotate(-yRotation, 0, 0);
+                    }
+                }
+            }
         }
     }
 

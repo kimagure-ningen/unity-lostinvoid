@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -762,7 +762,6 @@ GameObject:
   m_Component:
   - component: {fileID: 762749628}
   - component: {fileID: 762749630}
-  - component: {fileID: 762749629}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -784,28 +783,6 @@ Transform:
   m_Father: {fileID: 1690006229}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &762749629
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762749627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 1.25, y: 0.5, z: 0}
-  VerticalArmLength: 0
-  CameraSide: 1
-  CameraDistance: 2.5
-  CameraCollisionFilter:
-    serializedVersion: 2
-    m_Bits: 0
-  IgnoreTag: 
-  CameraRadius: 0.2
 --- !u!114 &762749630
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1675,10 +1652,10 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 20
+  m_Priority: 5
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 841546140}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -1742,8 +1719,6 @@ MonoBehaviour:
   character: {fileID: 1295463011}
   pivot: {fileID: 841546140}
   crosshair: {fileID: 1865133513}
-  maxYAngle: -0.5
-  minYAngle: 0.5
   planet: {fileID: 1193734216680312885}
   enemy: {fileID: 8918723491416087744, guid: 2df6240a718746a40b20ba5b9139fe93, type: 3}
   spawnedEnemy: []
@@ -1953,6 +1928,7 @@ MonoBehaviour:
   gameMaster: {fileID: 1856085566}
   planet: {fileID: 1193734216680312885}
   playerMesh: {fileID: 1295463006}
+  orientation: {fileID: 841546140}
 --- !u!54 &1945764111
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2122,8 +2098,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053787143}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.25, y: 22.5, z: -2.5}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalPosition: {x: 0, y: 27.396152, z: -2.6535897}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
