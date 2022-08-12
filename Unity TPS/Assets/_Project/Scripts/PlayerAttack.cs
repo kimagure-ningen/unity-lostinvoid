@@ -67,6 +67,7 @@ public class PlayerAttack : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimColliderLayerMask))
         {
             debugTransform.position = raycastHit.point;
+            Debug.Log(raycastHit.point);
         }
     }
 }

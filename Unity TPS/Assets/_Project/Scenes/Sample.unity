@@ -1916,7 +1916,6 @@ GameObject:
   - component: {fileID: 1633795716}
   - component: {fileID: 1633795715}
   - component: {fileID: 1633795714}
-  - component: {fileID: 1633795713}
   m_Layer: 0
   m_Name: DebugTransform
   m_TagString: Untagged
@@ -1924,19 +1923,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &1633795713
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633795712}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1633795714
 MeshRenderer:
   m_ObjectHideFlags: 0
