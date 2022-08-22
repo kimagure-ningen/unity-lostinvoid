@@ -18,6 +18,8 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask aimColliderLayerMask = new LayerMask();
     public Transform debugTransform;
 
+    private Vector3 mouseWorldPosition;
+
     void Update()
     {
         MouseAim();
@@ -25,11 +27,20 @@ public class PlayerAttack : MonoBehaviour
         if (player.isShootingMode == true)
         {
             MouseController();
-        }
 
-        if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 aimDir = (mouseWorldPosition - shootPoint.transform.position).normalized;
+                Debug.Log(mouseWorldPosition);
+                Instantiate(bulletPrefab, shootPoint.transform.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            }
+
+        } else
         {
-            Instantiate(bulletPrefab, shootPoint.transform.position, shootPoint.transform.rotation);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Instantiate(bulletPrefab, shootPoint.transform.position, shootPoint.transform.rotation);
+            }
         }
     }
 
