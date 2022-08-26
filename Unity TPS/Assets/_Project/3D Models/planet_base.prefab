@@ -1771,7 +1771,7 @@ GameObject:
   - component: {fileID: 90350041912885378}
   - component: {fileID: 1878604015963991230}
   m_Layer: 0
-  m_Name: Icosphere
+  m_Name: baseplanet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1851,7 +1851,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.020398425
+  m_Radius: 0.0203
   m_Center: {x: -0.00010506436, y: -0.000000040978197, z: 0.0000006491319}
 --- !u!1 &7651093466599700499
 GameObject:
