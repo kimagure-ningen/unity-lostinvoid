@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     
     void Start()
     {
-        planet = GameObject.Find("planetTest");
+        planet = GameObject.Find("baseplanet");
         if (planet == null)
         {
             Debug.LogError("Planet not found.");
