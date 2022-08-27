@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
 
             Destroy(gameObject);
         }
-        else if (other.gameObject.tag == "Obstacle")
+        else if (other.gameObject.tag == "Environment")
         {
             Destroy(gameObject);
         }

@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [Header("Unity Stuff")]
     public Player player;
 
     public GameObject shootPoint;
     public GameObject bulletPrefab;
+    public GameObject gun;
+    public Animator animator;
 
     [Header("Aim")]
     public Transform character;
@@ -21,8 +24,12 @@ public class PlayerAttack : MonoBehaviour
     {
         MouseAim();
 
+        animator.SetBool("isShootingMode", player.isShootingMode);
+
         if (player.isShootingMode == true)
         {
+            gun.SetActive(true);
+
             if (Input.GetMouseButtonDown(0))
             {
                 Vector3 mouseWorldPosition = Vector3.zero;
@@ -41,10 +48,7 @@ public class PlayerAttack : MonoBehaviour
 
         } else
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Instantiate(bulletPrefab, shootPoint.transform.position, shootPoint.transform.rotation);
-            }
+            gun.SetActive(false);
         }
     }
 

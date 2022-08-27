@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Player player;
     public GameObject planet;
     public GameObject playerMesh;
+    public Animator animator;
 
     private float speed = 4f;
     private float jumpHeight = 1.2f;
@@ -29,16 +30,12 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         //* Movement
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+        var velocity_x = Vector3.forward * Input.GetAxis("Vertical") * speed;
+        var velocity_y = Vector3.right * Input.GetAxis("Horizontal") * speed;
+        transform.Translate(velocity_x * Time.deltaTime);
+        transform.Translate(velocity_y * Time.deltaTime);
 
-        transform.Translate(x, 0, z);
-
-        // Testing New Type of Movement
-        //float x = Input.GetAxisRaw("Horizontal");
-        //float y = Input.GetAxisRaw("Vertical");
-        //rb.AddForce(orientation.transform.forward * y * 2000 * Time.deltaTime);
-        //rb.AddForce(orientation.transform.right * x * 2000 * Time.deltaTime);
+        animator.SetFloat("Speed", velocity_x.magnitude + velocity_y.magnitude);
 
         //* Jump (Not Working)
         if (Input.GetKeyDown(KeyCode.Space))
