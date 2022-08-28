@@ -5,6 +5,7 @@ using Cinemachine;
 
 public class ProbeInteractable : MonoBehaviour
 {
+    public GameObject ProbeInventory;
     public GameObject probeInteractionCanvas;
     public CinemachineVirtualCamera vCam3;
     private int defaultPriority;
@@ -16,13 +17,17 @@ public class ProbeInteractable : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log("Triggered");
+
         if (other.gameObject.tag == "Player")
         {
             probeInteractionCanvas.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKey(KeyCode.E))
             {
                 vCam3.Priority = 30;
+                Cursor.visible = true;
+                ProbeInventory.SetActive(true);
             }
         }
     }
