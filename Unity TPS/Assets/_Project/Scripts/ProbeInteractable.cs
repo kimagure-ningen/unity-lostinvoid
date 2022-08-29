@@ -5,6 +5,7 @@ using Cinemachine;
 
 public class ProbeInteractable : MonoBehaviour
 {
+    public Player player;
     public GameObject ProbeInventory;
     public GameObject probeInteractionCanvas;
     public CinemachineVirtualCamera vCam3;
@@ -28,6 +29,11 @@ public class ProbeInteractable : MonoBehaviour
                 vCam3.Priority = 30;
                 Cursor.visible = true;
                 ProbeInventory.SetActive(true);
+
+                if (player.isShootingMode == true)
+                {
+                    player.SwitchCamera();
+                }
             }
         }
     }

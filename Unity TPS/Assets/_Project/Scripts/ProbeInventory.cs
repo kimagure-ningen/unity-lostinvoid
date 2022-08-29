@@ -11,10 +11,10 @@ public class ProbeInventory : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) {
-            QButton();
+            EButton();
         } else if (Input.GetKeyDown(KeyCode.Q))
         {
-            EButton();
+            QButton();
         }
     }
 
@@ -25,7 +25,7 @@ public class ProbeInventory : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void EButton()
+    public void QButton()
     {
         if (vCam3.transform.position.x > -40 || spotLight.transform.position.x > -40)
         {
@@ -34,7 +34,7 @@ public class ProbeInventory : MonoBehaviour
         }
     }
 
-    public void QButton()
+    public void EButton()
     {
         if (vCam3.transform.position.x < 40 || spotLight.transform.position.x < 40)
         {

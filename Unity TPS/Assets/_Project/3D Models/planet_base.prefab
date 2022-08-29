@@ -2566,6 +2566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00113cfebdfe1747be8fe2631d515f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   ProbeInventory: {fileID: 0}
   probeInteractionCanvas: {fileID: 585832165}
   vCam3: {fileID: 0}

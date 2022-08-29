@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        crosshair.SetActive(false);
 
         defaultPriority = vCam2.Priority;
     }
@@ -58,7 +59,10 @@ public class Player : MonoBehaviour
             Damage(oxygenDeficiencyDamage * Time.deltaTime);
         }
 
-        SwitchCamera();
+        if (Input.GetMouseButtonDown(1))
+        {
+            SwitchCamera();
+        }
     }
 
     public void Damage(float damage)
@@ -72,26 +76,23 @@ public class Player : MonoBehaviour
         // Time.timeScale = 0;
     }
 
-    private void SwitchCamera()
+    public void SwitchCamera()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (vCam2.Priority == 20)
         {
-            if (vCam2.Priority == 20)
-            {
-                vCam2.Priority = defaultPriority;
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                crosshair.SetActive(false);
-                isShootingMode = false;
-            }
-            else
-            {
-                vCam2.Priority = 20;
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-                crosshair.SetActive(true);
-                isShootingMode = true;
-            }
+            vCam2.Priority = defaultPriority;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            crosshair.SetActive(false);
+            isShootingMode = false;
+        }
+        else
+        {
+            vCam2.Priority = 20;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            crosshair.SetActive(true);
+            isShootingMode = true;
         }
     }
 

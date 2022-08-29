@@ -2,20 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(CapsuleCollider))]
 
 public class OxygenReplenisher : MonoBehaviour
 {
-    private float rotateSpeed = 20f;
     private float oxygenReplenish = 20f;
 
     private void Awake() {
-        GetComponent<SphereCollider>().isTrigger = true;
-    }
-
-    private void Update()
-    {
-        transform.Rotate(transform.up * rotateSpeed * Time.deltaTime);
+        GetComponent<CapsuleCollider>().isTrigger = true;
     }
 
     private void OnTriggerEnter(Collider other)
