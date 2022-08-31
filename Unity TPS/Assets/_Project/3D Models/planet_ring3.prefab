@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8531420167820226766}
   - component: {fileID: 8359071473474696515}
   - component: {fileID: 5232647232591704926}
+  - component: {fileID: 10630940}
   m_Layer: 0
   m_Name: Torus.001
   m_TagString: Untagged
@@ -81,6 +82,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &10630940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294458474385098882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae55c7d6422a114d8d10a64228e5692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotation: 5
+  yRotation: 5
+  zRotation: 0
 --- !u!1 &3610919426357618455
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,6 +142,7 @@ GameObject:
   - component: {fileID: 8574662346777673731}
   - component: {fileID: 91475516047839674}
   - component: {fileID: 6522145867955137679}
+  - component: {fileID: 334062894}
   m_Layer: 0
   m_Name: Torus
   m_TagString: Untagged
@@ -196,6 +213,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &334062894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4921333020446675545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae55c7d6422a114d8d10a64228e5692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotation: 5
+  yRotation: 5
+  zRotation: 0
 --- !u!1 &7573311775807503938
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +239,7 @@ GameObject:
   - component: {fileID: 7180503091764098320}
   - component: {fileID: 6396740206471220903}
   - component: {fileID: 4080104228738015595}
+  - component: {fileID: 1596267967}
   m_Layer: 0
   m_Name: Roundcube
   m_TagString: Untagged
@@ -277,6 +310,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1596267967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7573311775807503938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae55c7d6422a114d8d10a64228e5692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotation: 3
+  yRotation: 3
+  zRotation: 0
 --- !u!1 &9033209165689720870
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +336,7 @@ GameObject:
   - component: {fileID: 3754190694232985842}
   - component: {fileID: 1697054447960088553}
   - component: {fileID: 2302642517761212687}
+  - component: {fileID: 723208181}
   m_Layer: 0
   m_Name: Torus.004
   m_TagString: Untagged
@@ -358,3 +407,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &723208181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033209165689720870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae55c7d6422a114d8d10a64228e5692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotation: 5
+  yRotation: 5
+  zRotation: 0

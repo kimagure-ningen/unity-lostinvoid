@@ -42,7 +42,6 @@ public class PlayerAttack : MonoBehaviour
                 }
 
                 Vector3 aimDir = (mouseWorldPosition - shootPoint.transform.position).normalized;
-                Debug.Log(mouseWorldPosition);
                 Instantiate(bulletPrefab, shootPoint.transform.position, Quaternion.LookRotation(aimDir, Vector3.up));
             }
 

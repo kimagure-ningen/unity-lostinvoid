@@ -14241,8 +14241,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5117873999450246053}
-  - component: {fileID: 919132148789128724}
-  - component: {fileID: 4100750260397358605}
   m_Layer: 0
   m_Name: hamburger
   m_TagString: Untagged
@@ -14270,32 +14268,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &919132148789128724
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5498200141812781343}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.0090475
-  m_Height: 2.3280551
-  m_Direction: 1
-  m_Center: {x: 0.019168738, y: 0.7525186, z: -0.07405913}
---- !u!114 &4100750260397358605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5498200141812781343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0963395ad16ec764797d378f872d4c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5524713264701682491
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
 
 public class Player : MonoBehaviour
@@ -10,14 +11,16 @@ public class Player : MonoBehaviour
     public float currentHealth;
 
     [Header("Hunger")]
+    public Slider hungerBar;
     private float maxHunger = 100f;
     private float hungerDepletionRate = 1f;
     private float hungerDeficiencyDamage = 2f;
     public float currentHunger;
 
     [Header("Oxygen")]
+    public Slider oxygenBar;
     private float maxOxygen = 100f;
-    private float oxygenDepletionRate = 5f;
+    private float oxygenDepletionRate = 3f;
     private float oxygenDeficiencyDamage = 10f;
     public float currentOxygen;
 
@@ -32,6 +35,9 @@ public class Player : MonoBehaviour
         currentHunger = maxHunger;
         currentOxygen = maxOxygen;
 
+        hungerBar.maxValue = maxHunger;
+        oxygenBar.maxValue = maxOxygen;
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         crosshair.SetActive(false);
@@ -42,6 +48,9 @@ public class Player : MonoBehaviour
     private void Update() {
         currentHunger -= hungerDepletionRate * Time.deltaTime;
         currentOxygen -= oxygenDepletionRate * Time.deltaTime;
+
+        hungerBar.value = currentHunger;
+        oxygenBar.value = currentOxygen;
 
         if (currentHealth <= 0)
         {

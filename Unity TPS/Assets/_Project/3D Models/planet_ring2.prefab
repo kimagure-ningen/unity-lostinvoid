@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 309750380507358810}
   - component: {fileID: 8782467081205463636}
   - component: {fileID: 1925932362085978406}
+  - component: {fileID: 1332860300}
   m_Layer: 0
   m_Name: Icosphere.002
   m_TagString: Untagged
@@ -81,6 +82,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1332860300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126280002640197034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae55c7d6422a114d8d10a64228e5692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotation: 2
+  yRotation: 5
+  zRotation: 0
 --- !u!1 &6488870211497082054
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +140,7 @@ GameObject:
   - component: {fileID: 313937034668376934}
   - component: {fileID: 8524595147185511262}
   - component: {fileID: 765046530688800997}
+  - component: {fileID: 1342682174}
   m_Layer: 0
   m_Name: Icosphere
   m_TagString: Untagged
@@ -194,3 +211,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1342682174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7941594527626314997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae55c7d6422a114d8d10a64228e5692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotation: 1
+  yRotation: 3
+  zRotation: 0

@@ -9,6 +9,7 @@ public class ProbeInteractable : MonoBehaviour
     public GameObject ProbeInventory;
     public GameObject probeInteractionCanvas;
     public CinemachineVirtualCamera vCam3;
+    public GameObject screenCanvas;
     private int defaultPriority;
 
     private void Start()
@@ -29,6 +30,7 @@ public class ProbeInteractable : MonoBehaviour
                 vCam3.Priority = 30;
                 Cursor.visible = true;
                 ProbeInventory.SetActive(true);
+                screenCanvas.SetActive(false);
 
                 if (player.isShootingMode == true)
                 {

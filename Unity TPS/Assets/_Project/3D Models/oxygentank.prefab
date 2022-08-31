@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 5909926290100506593}
   - component: {fileID: 7326122062628634692}
   - component: {fileID: 4778154805072835726}
-  - component: {fileID: 7049657592586432503}
-  - component: {fileID: 1802612303003777351}
   m_Layer: 0
   m_Name: oxygentank
   m_TagString: Untagged
@@ -86,29 +84,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7049657592586432503
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6435527364521661787}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.10458561
-  m_Height: 0.66051346
-  m_Direction: 1
-  m_Center: {x: -0.0000009413713, y: 0.33025697, z: 0.0000038011297}
---- !u!114 &1802612303003777351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6435527364521661787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a166906e319d2142b9ba920dfe51eca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

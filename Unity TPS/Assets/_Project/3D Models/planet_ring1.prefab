@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3374990121165743474}
   - component: {fileID: 6683475630546500938}
   - component: {fileID: 2310617603291168497}
+  - component: {fileID: 212991481}
   m_Layer: 0
   m_Name: Icosphere
   m_TagString: Untagged
@@ -81,6 +82,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &212991481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4952619931371610849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae55c7d6422a114d8d10a64228e5692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotation: 1
+  yRotation: 2
+  zRotation: 0
 --- !u!1 &6010710841161086279
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +108,7 @@ GameObject:
   - component: {fileID: 3817139087963196683}
   - component: {fileID: 3935549596583217286}
   - component: {fileID: 721308597866598043}
+  - component: {fileID: 793886429}
   m_Layer: 0
   m_Name: Torus.001
   m_TagString: Untagged
@@ -106,13 +123,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6010710841161086279}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 8920436846197145704}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &3935549596583217286
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -162,6 +179,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &793886429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6010710841161086279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae55c7d6422a114d8d10a64228e5692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotation: 5
+  yRotation: 2
+  zRotation: 0
 --- !u!1 &8106499807810640594
 GameObject:
   m_ObjectHideFlags: 0
