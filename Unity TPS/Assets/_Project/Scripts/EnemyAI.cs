@@ -46,7 +46,6 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        // masterScript.GroundConrol(gameObject, distanceToGround, groundNormal, onGround, rb);
         GroundConrol();
         Gravity();
 
@@ -54,13 +53,6 @@ public class EnemyAI : MonoBehaviour
             EnemyNavigation();
         } else {
             transform.Translate(speed*Time.deltaTime,0,0);
-        }
-    }
-
-    void OnCollisionStay(Collision collision) {
-        if (collision.gameObject.tag == "Obstacle") {
-            StartCoroutine(ObstacleCollision());
-            Debug.Log("obstacle hit!");
         }
     }
 

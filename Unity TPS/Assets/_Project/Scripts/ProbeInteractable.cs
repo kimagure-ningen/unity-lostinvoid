@@ -5,23 +5,26 @@ using Cinemachine;
 
 public class ProbeInteractable : MonoBehaviour
 {
+    [Header("Unity Stuff")]
+    public GameObject _player;
     public Player player;
     public GameObject ProbeInventory;
     public GameObject probeInteractionCanvas;
     public CinemachineVirtualCamera vCam3;
     public GameObject screenCanvas;
     private int defaultPriority;
+    private float UIAppearDistance = 8f;
 
     private void Start()
     {
         defaultPriority = vCam3.Priority;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void Update()
     {
-        Debug.Log("Triggered");
+        float distance = Vector3.Distance(_player.transform.position, gameObject.transform.position);
 
-        if (other.gameObject.tag == "Player")
+        if (distance <= UIAppearDistance)
         {
             probeInteractionCanvas.SetActive(true);
 
@@ -37,12 +40,7 @@ public class ProbeInteractable : MonoBehaviour
                     player.SwitchCamera();
                 }
             }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
+        } else
         {
             probeInteractionCanvas.SetActive(false);
         }

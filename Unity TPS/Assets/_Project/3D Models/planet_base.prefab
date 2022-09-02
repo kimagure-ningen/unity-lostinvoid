@@ -2549,11 +2549,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8764836004819506966}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.699575, y: 5.442861, z: 5.0457835}
-  m_Center: {x: -0.07389283, y: 0.582572, z: 0.14225483}
+  m_Size: {x: 2.9591644, y: 4.726618, z: 3.0060472}
+  m_Center: {x: -0.05832231, y: 0.94069386, z: 0.07218754}
 --- !u!114 &234612329475662936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2566,10 +2566,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00113cfebdfe1747be8fe2631d515f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   player: {fileID: 0}
   ProbeInventory: {fileID: 0}
   probeInteractionCanvas: {fileID: 585832165}
   vCam3: {fileID: 0}
+  screenCanvas: {fileID: 0}
 --- !u!1 &9218427370164125406
 GameObject:
   m_ObjectHideFlags: 0
