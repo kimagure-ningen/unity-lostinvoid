@@ -8,21 +8,19 @@ public class Player : MonoBehaviour
 {
     [Header("Health")]
     private float maxHealth = 100f;
-    public float currentHealth;
+    [HideInInspector]public float currentHealth;
 
     [Header("Hunger")]
-    public Slider hungerBar;
-    private float maxHunger = 100f;
-    private float hungerDepletionRate = 1f;
+    [HideInInspector] public float maxHunger = 100f;
+    private float hungerDepletionRate = 0.5f;
     private float hungerDeficiencyDamage = 2f;
-    public float currentHunger;
+    [HideInInspector]public float currentHunger;
 
     [Header("Oxygen")]
-    public Slider oxygenBar;
-    private float maxOxygen = 100f;
-    private float oxygenDepletionRate = 3f;
+    [HideInInspector]public float maxOxygen = 100f;
+    private float oxygenDepletionRate = 1f;
     private float oxygenDeficiencyDamage = 10f;
-    public float currentOxygen;
+    [HideInInspector]public float currentOxygen;
 
     [Header("Shooting Mode")]
     public CinemachineVirtualCamera vCam2;
@@ -35,9 +33,6 @@ public class Player : MonoBehaviour
         currentHunger = maxHunger;
         currentOxygen = maxOxygen;
 
-        hungerBar.maxValue = maxHunger;
-        oxygenBar.maxValue = maxOxygen;
-
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         crosshair.SetActive(false);
@@ -48,9 +43,6 @@ public class Player : MonoBehaviour
     private void Update() {
         currentHunger -= hungerDepletionRate * Time.deltaTime;
         currentOxygen -= oxygenDepletionRate * Time.deltaTime;
-
-        hungerBar.value = currentHunger;
-        oxygenBar.value = currentOxygen;
 
         if (currentHealth <= 0)
         {

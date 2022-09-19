@@ -37,12 +37,6 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("Speed", velocity_x.magnitude + velocity_y.magnitude);
 
-        //* Jump (Not Working)
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(transform.up * 100000 * jumpHeight * Time.deltaTime);
-        }
-
         gameMaster.GroundConrol(gameObject, distanceToGround, groundNormal, onGround, rb);
 
         meshController();
