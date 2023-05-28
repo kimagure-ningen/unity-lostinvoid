@@ -1,4 +1,4 @@
-# Unity Lost in Void
+# Lost in Void
 ## Overview
 Unity 3D project, top-down tps game. (Run in Unity 2020.3.15f2) 
 <br>
